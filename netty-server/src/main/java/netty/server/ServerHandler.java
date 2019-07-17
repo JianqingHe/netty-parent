@@ -44,7 +44,7 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
             response = "goodbye !! \r\n";
             close = true;
         } else {
-            response = "Did you say '" + request + "' ? \r\n";
+            response = LocalDateTime.now() + ": Did you say '" + request + "' ? \r\n";
         }
         ChannelFuture cf = ctx.write(response);
         if (close) {

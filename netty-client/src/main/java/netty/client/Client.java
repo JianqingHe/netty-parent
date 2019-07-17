@@ -10,6 +10,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.LocalDateTime;
 
 /**
  * 客户端
@@ -38,7 +39,7 @@ public class Client {
                     break;
                 }
 
-                lastWriteFuture = ch.writeAndFlush(line + "\r\n");
+                lastWriteFuture = ch.writeAndFlush(line + " " + LocalDateTime.now() + "\r\n");
                 if ("bye".equalsIgnoreCase(line)) {
                     ch.closeFuture().sync();
                     break;
